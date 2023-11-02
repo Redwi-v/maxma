@@ -4,21 +4,20 @@ import Button from '../UI/Button';
 import styles from './numberInput.module.scss';
 import { useState } from 'react';
 
-
 function NumberForm(props) {
-    const { windowWidth, buttonText, style, loadContent, sendAction } = props;
+    const { windowWidth, buttonText, style, loadContent, sendAction, border } = props;
 
     const [isFocus, setIsFocus] = useState(false);
     const [status, setStatus] = useState('');
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('');
 
     const changeInputValue = (e) => {
-        setInputValue(e.target.value)
-    }
+        setInputValue(e.target.value);
+    };
 
     const send = () => {
-        sendAction()
-    }
+        sendAction();
+    };
     const focus = () => {
         setIsFocus(true);
     };
@@ -27,39 +26,34 @@ function NumberForm(props) {
     };
 
     const onClick = () => {
-        console.log(inputValue);
-        const numberIsValid = validateNumber(inputValue)
+        const numberIsValid = validateNumber(inputValue);
 
         if (!numberIsValid && status !== 'code' && status !== 'codeErr') {
-            setStatus('numberErr')
-            return
+            setStatus('numberErr');
+            return;
         }
 
         if (!status || status === 'numberErr') {
-            setStatus('loading')
+            setStatus('loading');
             setTimeout(() => {
-                setStatus('code')
-                setInputValue('')
-
-            }, 1000)
+                setStatus('code');
+                setInputValue('');
+            }, 1000);
         }
 
         if (status === 'code' || status === 'codeErr') {
             if (inputValue === '1 1 1') {
-                setStatus('codeErr')
+                setStatus('codeErr');
             } else {
-                setStatus('')
-                send()
-                setInputValue('')
+                setStatus('');
+                send();
+                setInputValue('');
             }
         }
-
-
     };
 
-
     const renderButtonText = () => {
-        if (!status) return buttonText
+        if (!status) return buttonText;
 
         if (status === 'loading') {
             return (
@@ -67,7 +61,7 @@ function NumberForm(props) {
                     <span></span>
                     <span></span>
                 </div>
-            )
+            );
         }
 
         if (status === 'code' || status === 'codeErr') {
@@ -75,20 +69,19 @@ function NumberForm(props) {
                 <div className={styles.load}>
                     <img src="/img/icons/other/checker.svg" alt="checker" />
                 </div>
-            )
+            );
         }
 
-        return buttonText
-    }
-    console.log(status);
+        return buttonText;
+    };
 
     return (
         <div className={styles.form}>
-            <div className={clsx(styles.box, isFocus && styles.focus)}>
+            <div className={clsx(styles.box, isFocus && styles.focus, border && styles.border)}>
                 {status !== 'code' && status !== 'codeErr' && <span className={styles.startNumber}>+7</span>}
 
-                {
-                    status === 'code' || status === 'codeErr' ? <ReactInputMask
+                {status === 'code' || status === 'codeErr' ? (
+                    <ReactInputMask
                         onFocus={focus}
                         onBlur={blur}
                         className={styles.input}
@@ -96,13 +89,13 @@ function NumberForm(props) {
                         maskChar={'_'}
                         value={inputValue}
                         onChange={changeInputValue}
-                        style={
-                            {
-                                color: '#000',
-                                textAlign: 'center'
-                            }
-                        }
-                    /> : <ReactInputMask
+                        style={{
+                            color: '#000',
+                            textAlign: 'center',
+                        }}
+                    />
+                ) : (
+                    <ReactInputMask
                         onFocus={focus}
                         onBlur={blur}
                         className={styles.input}
@@ -111,18 +104,22 @@ function NumberForm(props) {
                         value={inputValue}
                         onChange={changeInputValue}
                     />
-                }
+                )}
 
                 <div
                     onClick={onClick}
-                    className={clsx((status === 'code' || status === 'codeErr') && styles.codeBtn, style === 'black' ? styles.black_button : styles.button, {
-                        'display-none': windowWidth <= 440,
-                    })}
+                    className={clsx(
+                        (status === 'code' || status === 'codeErr') && styles.codeBtn,
+                        style === 'black' ? styles.black_button : styles.button,
+                        {
+                            'display-none': windowWidth <= 440,
+                        }
+                    )}
                 >
                     {style === 'black' ? (
                         renderButtonText()
                     ) : (
-                        <div >
+                        <div>
                             <video autoPlay loop muted playsInline>
                                 <source src="/videos/button-gradient.mp4" type="video/mp4" />
                             </video>
@@ -131,14 +128,37 @@ function NumberForm(props) {
                     )}
                 </div>
             </div>
+            <div
+                onClick={onClick}
+                className={clsx(
+                    styles.freeBtn,
+                    (status === 'code' || status === 'codeErr') && styles.codeBtn,
+                    style === 'black' ? styles.black_button : styles.button
+                )}
+                style={{
+                    display: windowWidth <= 440 ? 'block' : 'none',
+                    marginTop: 16,
+                    textAlign: 'center',
+                }}
+            >
+                {style === 'black' ? (
+                    renderButtonText()
+                ) : (
+                    <div>
+                        <video autoPlay loop muted playsInline>
+                            <source src="/videos/button-gradient.mp4" type="video/mp4" />
+                        </video>
+                        <span>{renderButtonText()}</span>
+                    </div>
+                )}
+            </div>
             {loadContent && loadContent({ status })}
         </div>
     );
 }
 
 function validateNumber(number) {
-    return number && number.length >= 10
+    return number && number.length >= 10;
 }
-
 
 export default NumberForm;

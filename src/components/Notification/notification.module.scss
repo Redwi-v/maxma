@@ -50,3 +50,10 @@
         right: 50px;
     }
 }
+
+@media (max-width: 440px) {
+    .notification {
+        width: 300px;
+        gap: 30px;
+    }
+}

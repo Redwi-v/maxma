@@ -332,6 +332,7 @@
                 padding: 4px;
                 position: relative;
                 z-index: 5;
+
                 &-link {
                     cursor: pointer;
                     display: inline-flex;
@@ -449,6 +450,10 @@
                 line-height: 150%;
             }
         }
+    }
+
+    &__box-left-menu--wrapper {
+        display: flex;
     }
 }
 
@@ -588,6 +593,7 @@
                 }
                 &-text {
                     color: #a29fb2;
+                    cursor: pointer;
                 }
             }
         }
@@ -634,7 +640,6 @@
         padding-top: 30px;
     }
 }
-
 @media (max-width: 1400px) {
     .blog {
         .container {
@@ -953,9 +958,17 @@
             &-enter {
                 width: 100%;
                 margin: 20px 0;
+
+                flex-direction: column;
+                display: flex;
+                justify-content: center;
                 &-checkbox {
                     justify-content: center;
+                    margin-left: 0;
                 }
+            }
+            input {
+                width: auto !important;
             }
         }
     }
@@ -975,6 +988,9 @@
 }
 
 @media (max-width: 545px) {
+    .header {
+        padding: 15px 27px;
+    }
     .prices {
         margin-bottom: 40px;
         &__items {
