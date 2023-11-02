@@ -1,5 +1,4 @@
-import { useSwiper } from "swiper/react";
-import styles from './swiperNavigation.module.scss'
+import styles from './swiperNavigation.module.scss';
 
 function SwiperNavigation({ swiperInst }) {
     // const swiper = useSwiper()
@@ -14,7 +13,7 @@ function SwiperNavigation({ swiperInst }) {
                 <img src="/img/icons/other/slider_arrow.png" alt="prev" />
             </button>
         </div>
-    )
+    );
 }
 
 export default SwiperNavigation;

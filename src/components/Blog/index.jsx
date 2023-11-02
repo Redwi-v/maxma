@@ -1,34 +1,29 @@
-import { Mousewheel } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import BlogCard from "../Cards/BlogCard";
-import SwiperNavigation from "../SwiperNavigation";
-import { useRef } from "react";
+import { Mousewheel } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import BlogCard from '../Cards/BlogCard';
+import SwiperNavigation from '../SwiperNavigation';
+import { useRef } from 'react';
 
 function Blog(props) {
-
-    const swiperInst = useRef(null)
+    const swiperInst = useRef(null);
 
     return (
-        <section id={"anchor-blog"} className={"blog"}>
+        <section id={'anchor-blog'} className={'blog'}>
             <div className="container">
-                <h2 className={"blog__title"}>Блог для Ритейлера</h2>
+                <h2 className={'blog__title'}>Блог для Ритейлера</h2>
                 <div className="blog__items">
                     <SwiperNavigation swiperInst={swiperInst.current} />
 
                     <Swiper
                         mousewheel={true}
                         modules={[Mousewheel]}
-                        slidesPerView={"auto"}
+                        slidesPerView={'auto'}
                         spaceBetween={32}
                         centeredSlides={true}
                         loop={true}
                         onInit={(swiper) => {
-                            swiperInst.current = swiper
+                            swiperInst.current = swiper;
                         }}
-
-
-
-
                         breakpoints={{
                             1400: {
                                 slidesPerView: 4,
@@ -39,7 +34,6 @@ function Blog(props) {
                                 slidesPerView: 3,
                                 centeredSlides: true,
                                 spaceBetween: 64,
-
                             },
                             600: {
                                 slidesPerView: 2,
@@ -51,13 +45,11 @@ function Blog(props) {
                                 spaceBetween: 32,
                                 centeredSlides: true,
                             },
-                        }}>
-
+                        }}
+                    >
                         {[...new Array(29)].map((_, i) => (
                             <SwiperSlide key={i}>
-                                <BlogCard
-                                    size={i % 2 === 0 ? "max" : "min"}
-                                />
+                                <BlogCard size={i % 2 === 0 ? 'max' : 'min'} />
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -66,7 +58,5 @@ function Blog(props) {
         </section>
     );
 }
-
-
 
 export default Blog;

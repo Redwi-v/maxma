@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import ReactInputMask from 'react-input-mask';
-import Button from '../UI/Button';
 import styles from './numberInput.module.scss';
 import { useState } from 'react';
 

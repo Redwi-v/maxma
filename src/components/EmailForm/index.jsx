@@ -28,7 +28,6 @@ function EmailForm({ windowWidth, buttonText, formSendedCallBack, isOpen, custom
     const onClick = () => {
         sendForm();
     };
-    console.log(windowWidth);
 
     return (
         <div
