@@ -54,7 +54,7 @@ const Homepage = () => {
             <CostSection windowWidth={windowWidth} openNotification={openNotification} />
             <PricesSection windowWidth={windowWidth} openNotification={openNotification} />
             <Blog />
-            <MailingSection openNotification={openNotification} />
+            <MailingSection openNotification={openNotification} windowWidth={windowWidth} />
             <Footer />
         </>
     );
