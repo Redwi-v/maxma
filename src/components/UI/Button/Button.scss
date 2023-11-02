@@ -1,0 +1,19 @@
+.button {
+    color: #fff;
+    padding: 10px 32px;
+    border-radius: 70px;
+    background: #312d48;
+
+    transition: background 0.2s;
+
+    &:not(&--white):not(&--hoverOff):hover {
+        background: #443f60;
+    }
+
+    &--icon {
+        padding: 8px 24px;
+        img {
+            display: block;
+        }
+    }
+}

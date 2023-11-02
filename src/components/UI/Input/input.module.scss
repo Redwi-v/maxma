@@ -1,0 +1,72 @@
+.form_input {
+    width: 100%;
+    .box {
+        padding: 4px 4px 4px 10px;
+        border-radius: 100px;
+        background: var(--White, #fff);
+        display: flex;
+        align-items: center;
+
+        border-radius: 100px;
+        border: 1.5px solid rgba(113, 108, 144, 0.5);
+
+        background: var(--White, #fff);
+
+        .startNumber {
+            color: #a29fb2;
+        }
+        .input {
+            width: 340px;
+            padding: 0 20px;
+        }
+
+        .button {
+            border-radius: 100px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            height: 40px;
+
+            border-radius: 70px;
+            background: #312d48;
+
+            span {
+                transition: all 0.3s;
+                display: block;
+
+                white-space: pre;
+
+                color: var(--White, #fff);
+
+                /* Text Medium */
+                font-family: Rubik;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: 20px; /* 125% */
+                letter-spacing: -0.16px;
+            }
+        }
+
+        .button:hover {
+            background: linear-gradient(0deg, #171522 0%, #171522 100%);
+        }
+    }
+    .notion {
+        color: rgba(49, 45, 72, 0.4);
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    .focus {
+        outline: 2px solid #312d48;
+    }
+
+    .err {
+        outline: 2px solid #df4e68;
+    }
+}

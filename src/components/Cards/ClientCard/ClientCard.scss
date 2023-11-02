@@ -1,0 +1,61 @@
+.clientCard {
+    min-width: 260px;
+    cursor: pointer;
+    * {
+        user-select: none;
+    }
+    &__preview {
+        position: relative;
+
+        width: 290px;
+        height: 420px;
+        overflow: hidden;
+        border-radius: 18px;
+    }
+
+    .clientCard__banner {
+        position: absolute;
+        bottom: 3px;
+        left: 3px;
+
+        padding: 6px 12px;
+
+        color: rgba(49, 45, 72, 0.85);
+        font-family: Rubik;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 450;
+        line-height: 20px;
+        letter-spacing: -0.16px;
+
+        border-radius: 70px;
+        background: radial-gradient(2183.21% 125.93% at 0% 28.12%, #cdedfc 0%, #fae8fb 43.23%, #cdd0fb 100%);
+    }
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+
+        .clientCard__icon {
+            display: block;
+            width: auto;
+            height: auto;
+            margin-right: 3px;
+        }
+
+        &-title {
+            font-family: 'Point Soft', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: -0.96px;
+            margin-top: 12px;
+        }
+        &-extra {
+            color: rgba(49, 45, 72, 0.4);
+            max-width: 195px;
+            font-weight: 400;
+            margin: 9px auto 0 auto;
+        }
+    }
+}

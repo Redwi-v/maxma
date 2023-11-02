@@ -1,0 +1,433 @@
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
+
+.modal-video-movie-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.video_modal_close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000000;
+}
+
+/* [СБРОС СТАНДАРТНЫХ СТИЛЕЙ] */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.16px;
+    color: #312d48;
+}
+
+p,
+span,
+a,
+li,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input {
+    border: none;
+    background: transparent;
+    &:focus {
+        outline: none;
+    }
+}
+
+a,
+button,
+input[type='submit'] {
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Point Soft', sans-serif;
+}
+
+/* [ГЛОБАЛЬНЫЕ СТИЛИ] */
+
+h2 {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 98%;
+    letter-spacing: -1.76px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 98%;
+    letter-spacing: -1.44px;
+}
+
+:focus-visible {
+    outline: none;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.display-none {
+    display: none;
+}
+
+.clients__items {
+    .swiper {
+        padding-top: 50px;
+        &-slide {
+            display: flex;
+            justify-content: center;
+            &:nth-child(2n) {
+                margin-bottom: 80px;
+            }
+            &:nth-child(2n-1) {
+                margin-top: 80px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1220px) {
+    .blogCard {
+        min-width: 300px;
+    }
+    .blog__items {
+        .swiper {
+            &-slide {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.swiper {
+    padding: 5px;
+    &-wrapper {
+        align-items: center;
+    }
+}
+
+.range {
+    &__thumb {
+        border-radius: 20px;
+        border: 3px solid #312d48;
+        background: #fff;
+        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.14);
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-circle {
+            border-radius: 20px;
+            background: #312d48;
+            width: 8px;
+            height: 8px;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    h2 {
+        font-size: 38px;
+    }
+}
+
+/* [ГЛОБАЛЬНЫЕ АНИМАЦИИ] */
+.animation-scale-1-1 {
+    transition: transform 0.25s;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+/* [ПОДКЛЮЧЕНИЕ ШРИФТОВ] */
+
+// 900 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Black Italic'),
+        local('PointSoft-BlackItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-BlackItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-BlackItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: block;
+}
+
+// 900 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Black'),
+        local('PointSoft-Black'),
+        url('./../public/fonts/Point Soft/PointSoft-Black.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-Black.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+}
+
+// 700 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Unnamed Bold'),
+        local('Unnamed-Bold'),
+        url('./../public/fonts/Point Soft/Unnamed-Bold.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/Unnamed-Bold.woff') format('woff'),
+        url('./../public/fonts/Point Soft/Unnamed-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+// 400 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Book'),
+        local('PointSoft-Book'),
+        url('./../public/fonts/Point Soft/PointSoft-Book.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-Book.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+// 400 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Book Italic'),
+        local('PointSoft-BookItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-BookItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-BookItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: block;
+}
+
+// 800 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Extra Bold Italic'),
+        local('PointSoft-ExtraBoldItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBoldItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBoldItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: block;
+}
+
+// 800 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Extra Bold'),
+        local('PointSoft-ExtraBold'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBold.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBold.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: block;
+}
+
+// 500 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Unnamed Medium'),
+        local('Unnamed-Medium'),
+        url('./../public/fonts/Point Soft/Unnamed-Medium.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/Unnamed-Medium.woff') format('woff'),
+        url('./../public/fonts/Point Soft/Unnamed-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+
+// 600 italic
+@font-face {
+    font-family: 'Point Soft SemBd';
+    src:
+        local('Point Soft Semi Bold Italic'),
+        local('PointSoft-SemiBoldItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBoldItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBoldItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: block;
+}
+
+// 600 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Semi Bold'),
+        local('PointSoft-SemiBold'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBold.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBold.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: block;
+}
+
+// 300 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Light Italic'),
+        local('PointSoft-LightItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-LightItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-LightItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: block;
+}
+
+// 300 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Light'),
+        local('PointSoft-Light'),
+        url('./../public/fonts/Point Soft/PointSoft-Light.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-Light.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+// 200 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Extra Light'),
+        local('PointSoft-ExtraLight'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLight.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLight.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: block;
+}
+
+// 200 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Extra Light Italic'),
+        local('PointSoft-ExtraLightItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLightItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLightItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-ExtraLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+    font-display: block;
+}
+
+// 100 italic
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Thin Italic'),
+        local('PointSoft-ThinItalic'),
+        url('./../public/fonts/Point Soft/PointSoft-ThinItalic.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-ThinItalic.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: block;
+}
+
+// 100 normal
+@font-face {
+    font-family: 'Point Soft';
+    src:
+        local('Point Soft Thin'),
+        local('PointSoft-Thin'),
+        url('./../public/fonts/Point Soft/PointSoft-Thin.woff2') format('woff2'),
+        url('./../public/fonts/Point Soft/PointSoft-Thin.woff') format('woff'),
+        url('./../public/fonts/Point Soft/PointSoft-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: block;
+}

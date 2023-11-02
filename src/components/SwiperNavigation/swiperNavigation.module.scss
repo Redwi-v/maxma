@@ -1,0 +1,34 @@
+.navigation {
+    button {
+        position: absolute;
+        left: 0;
+        top: 74px;
+        width: 32px;
+        height: 32px;
+        z-index: 10;
+    }
+
+    .next {
+        left: auto;
+        right: 15%;
+    }
+    .prev {
+        transform: rotate(180deg);
+        left: 15%;
+    }
+}
+
+@media (max-width: 1280px) {
+    .next {
+        right: 5% !important;
+    }
+    .prev {
+        left: 5% !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .navigation {
+        display: none;
+    }
+}
